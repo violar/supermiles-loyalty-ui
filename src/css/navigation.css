@@ -1,0 +1,41 @@
+.outer-container {
+    height: 80px;
+    width:100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+    border-bottom: 1px solid #e4e8f0;
+}
+
+.inner-container {
+    width:815px;
+    margin:0 auto;
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-right {
+    float: right;
+    width: 200px;
+}
+
+.logout-btn {
+    color: #2e5afe;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.vertical-line {
+    border-right: 1px solid #e4e8f0;
+    height: 50px;
+    width: 1px;
+    margin: 0px 10px;
+    float: left;
+}
+
+.user-points {
+    font-size: 13px;
+    font-weight: bold;
+}
