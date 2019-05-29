@@ -6,32 +6,35 @@ export const products = [
             {
                 optionId: 1,
                 optionName: 'WHITE - 3,000 miles',
+                optionDescription: 'White Headphones',
                 optionMiles: 3000,
-                optionImageUrl: 'headphones-white.png'
+                optionImageUrl: `${process.env.PUBLIC_URL}/images/headphones-white.png`
             },
             {
                 optionId: 2,
                 optionName: 'BLACK - 3,000 miles',
+                optionDescription: 'Black Headphones',
                 optionMiles: 3000,
-                optionImageUrl: 'headphones-black.png'
+                optionImageUrl: `${process.env.PUBLIC_URL}/images/headphones-black.png`
             },
             {
                 optionId: 3,
                 optionName: 'GOLD - 5,500 miles',
+                optionDescription: 'Gold Headphones',
                 optionMiles: 5500,
-                optionImageUrl: 'headphones-gold.png'
+                optionImageUrl: `${process.env.PUBLIC_URL}/images/headphones-gold.png`
             }
         ]
     }
 ];
 
-const users = [
+export const users = [
     {
         id: 1,
-        username: '',
-        email: '',
-        password: '',
-        avatarUrl: '',
-        miles: 12323
+        username: 'Katie',
+        email: 'samplemail@mail.com',
+        password: 'password',
+        avatarUrl: `${process.env.PUBLIC_URL}/images/avatar.png`,
+        miles: 38441
     }
 ];

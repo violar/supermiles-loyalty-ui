@@ -1,0 +1,38 @@
+.purchased-heading {
+    font-size: 27px;
+    color: #434c60;
+}
+
+.purchased-container {
+    margin-top: 50px;
+}
+
+.purchased-display {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0);
+    border-color: #eff2ff !important;
+    background-color: white;
+    padding: 50px 0 50px 0;
+    width: 785px;
+}
+
+.purchased-thumbnail {
+    display: block;
+    margin: 0 auto;
+}
+
+.product-description {
+    color: #313b4f;
+    font-size: 26px;
+}
+
+.purchased-keep-shopping-btn {
+    background-image: linear-gradient(#2d5afd, #234ad6) !important;
+    color: white !important;
+    font-size: 13px !important;
+    padding: 15px 50px 15px 50px !important;
+    border: none !important;
+    font-family: Verdana, Tahoma, sans-serif !important;
+    font-weight: bold !important;
+    margin: 50px auto !important;
+    display: block !important;
+}

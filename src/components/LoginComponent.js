@@ -3,7 +3,7 @@ import { FormGroup, Label, Input, Button, Container, Row, Col,
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle } from 'reactstrap'
 import '../css/login.css';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import { Control, Form, Errors } from 'react-redux-form';
 
 const LoginError = ({message}) => {
@@ -17,7 +17,7 @@ const LoginError = ({message}) => {
 }
 
 export const Login = (props) => {
-    if(props.loggedIn) {
+    if(props.loginSuccessful) {
         return <Redirect to="/product/1" />
     } 
 
@@ -33,12 +33,12 @@ export const Login = (props) => {
                                 <Form model="userLogin" onSubmit={(values) => { props.authenticate(values)}} className="mt-4">
                                     <FormGroup>
                                         <Label className="login-form-text">EMAIL ADDRESS</Label>
-                                        <Control type="email" model=".email" name="email" className="login-input-border form-control"/>
+                                        <Control.text type="email" model=".email" name="email" className="login-input-border form-control"/>
                                     </FormGroup>
                                     <FormGroup>
                                         <Label className="login-form-text">PASSWORD</Label>
                                         <a href="#" className="login-forgot-password">Forgot password?</a>
-                                        <Control type="password" model=".password" name="password" className="login-input-border form-control"/>
+                                        <Control.text type="password" model=".password" name="password" className="login-input-border form-control"/>
                                     </FormGroup>
                                     <LoginError message={props.loginFailed} />
                                     <Button type="submit" className="login-sign-in" color="primary" size="lg" block>Sign in</Button>

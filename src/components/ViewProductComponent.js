@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import headphonesBlack from '../images/Headphones - black.png';
-import headphonesGold from '../images/Headphones - gold.png';
-import headphonesWhite from '../images/Headphones - white.png';
 import '../css/products.css';
 import { Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { products } from '../mockData';
+import { Redirect } from 'react-router-dom';
 
 
 class ViewProduct extends Component {
@@ -15,15 +13,23 @@ class ViewProduct extends Component {
         this.state = { 
             product: products[0],
             selectedOption: products[0].productOptions[0],
-            purchaseModal: false
+            purchaseModal: false,
+            temporaryMiles: this.props.userMiles
         };
 
         this.selectOption = this.selectOption.bind(this);
         this.togglePurchaseModal = this.togglePurchaseModal.bind(this);
+        this.purchaseProduct = this.purchaseProduct.bind(this);
+        this.temporaryMiles = this.temporaryMiles.bind(this);
     }
 
     selectOption(option) {
+
         this.setState({ selectedOption: option });
+    }
+
+    purchaseProduct() {
+        this.props.purchaseProduct(this.state.selectedOption, this.props.userMiles);
     }
 
     togglePurchaseModal() {
@@ -32,8 +38,17 @@ class ViewProduct extends Component {
         }));
     }
 
+    temporaryMiles() {
+        this.setState((prevState) => ({ 
+            temporaryMiles: prevState.temporaryMiles - this.state.selectedOption.optionMiles
+        }));
+    }
 
     render() {
+        if(this.props.purchaseSuccess) {
+            return <Redirect to="/purchased" />
+        }
+
         const buttons = 
             this.state.product.productOptions.map((option) => 
                     <Button className={`product-option ${this.state.selectedOption.optionId === option.optionId ? 'options-largest-width' :''}`} onClick={() => this.selectOption(option)} active={this.state.selectedOption.optionId === option.optionId}>{option.optionName}</Button>);
@@ -44,20 +59,20 @@ class ViewProduct extends Component {
                 <Col><div className="product-heading">{this.state.product.productName}</div></Col>
             </Row>
             <Row className="mt-4">
-                <Col xs="7"><div className="product-thumbnail-outer"><img src={headphonesWhite} className="product-thumbnail" /></div></Col>
+                <Col xs="7"><div className="product-thumbnail-outer"><img src={this.state.selectedOption.optionImageUrl} className="product-thumbnail" /></div></Col>
                 <Col xs="5">
                     <ButtonGroup className="btn-group-vertical options-largest-width">
                         {buttons}
                     </ButtonGroup>
-                    <Button type="button" onClick={this.togglePurchaseModal} className="purchase-option-btn" color="primary" size="lg" block>Purchase</Button>
-                    <Modal size={{width: '563px'}} contentClassName="purchase-modal-content" className="modal-dialog-centered" backdropClassName="purchase-modal" isOpen={this.state.purchaseModal} toggle={this.togglePurchaseModal} >
-                        <ModalHeader style={{color: '#2e384d', fontSize: "15px", fontFamily: "Verdana, Tahoma, sans-serif", textAlign: "center"}} className="purchase-modal-inner-content-header" toggle={this.toggle}>Item has been added to your cart!</ModalHeader>
-                        <ModalBody className="purchase-modal-inner-content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <Button type="button" onClick={() => {this.togglePurchaseModal(); this.temporaryMiles()}} className="purchase-option-btn" color="primary" size="lg" block>Purchase</Button>
+                    <Modal contentClassName="purchase-modal-content" backdropClassName="purchase-modal" isOpen={this.state.purchaseModal} toggle={this.togglePurchaseModal} >
+                        <ModalHeader className="modal-title">Item has been added to your cart!</ModalHeader>
+                        <ModalBody className="purchase-modal-body">
+                            You have <strong>{this.state.temporaryMiles} miles</strong> left in your account.
                         </ModalBody>
-                        <ModalFooter className="purchase-modal-inner-content">
-                            <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                            <Button color="secondary" onClick={this.togglePurchaseModal}>Cancel</Button>
+                        <ModalFooter className="purchase-modal-footer">
+                            <Button className="modal-footer-btn keep-shopping-btn" color="secondary" onClick={this.togglePurchaseModal}>Keep Shopping</Button>
+                            <Button className="modal-footer-btn purchase-now-btn" color="primary" onClick={this.purchaseProduct}>Purchase Now</Button>
                         </ModalFooter>
                     </Modal>
                 </Col>

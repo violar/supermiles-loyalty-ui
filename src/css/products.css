@@ -65,21 +65,53 @@
 .purchase-modal-content {
     border: 1px solid #eff2ff !important;
     border-radius: 0px !important; 
-    width: 863px !important;
+    margin-top: 130px !important;
+    padding: 30px !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0) !important;
+    text-align: center !important;
 }
 
-.purchase-modal-inner-content {
+.purchase-modal-body {
     border: none !important;
+    color: #8798ad !important;
+    font-family: Verdana, Tahoma, sans-serif !important;
+    font-size: 14px !important;
+    padding: 0px !important;
 }
 
-.purchase-modal-inner-content-header {
+.purchase-modal-footer {
+    border: none !important;
+    margin: 0 auto !important;
+}
+
+.modal-title {
     border: none !important;
     font-family: Verdana, Tahoma, sans-serif !important;
-    font-size: 16px !important;
+    font-size: 26px !important;
     color: #2e384d !important;
-    text-align: center !important;
+    margin: 0 auto;
 }
 
 .modal-content {
     width: 563px !important;
+    text-align: center !important;
+}
+
+.modal-footer-btn {
+    margin: 30px 0 0 0;
+    font-size: 13px !important;
+    padding: 15px 50px 15px 50px !important;
+    border: none !important;
+    font-family: Verdana, Tahoma, sans-serif !important;
+    font-weight: bold !important;
+}
+
+.keep-shopping-btn {
+    background-image: linear-gradient(#cbd5fb, #bec8ee);
+    color: #2e5afe !important;
+}
+
+.purchase-now-btn {
+    background-image: linear-gradient(#2d5afd, #234ad6);
+    color: white !important;
 }
