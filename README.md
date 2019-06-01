@@ -1,6 +1,8 @@
+[![CircleCI](https://circleci.com/gh/violar/supermiles-loyalty-ui.svg?style=svg)](https://circleci.com/gh/violar/supermiles-loyalty-ui)
+
 # Miles Sample Application
 
-This purpose of this application is to demonstrate usage of react and redux.
+The purpose of this application is to demonstrate usage of react and redux.
 
 ## Features
 - Login
