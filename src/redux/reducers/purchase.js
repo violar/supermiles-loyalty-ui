@@ -1,4 +1,4 @@
-import * as ActionTypes from './ActionTypes';
+import * as ActionTypes from '../actions/ActionTypes';
 
 export const Purchase = (state = {
     purchaseFailed: null,
@@ -17,6 +17,13 @@ export const Purchase = (state = {
             return {
                 ...state,
                 purchaseFailed: action.payload,
+                purchaseSuccessfull: false,
+                product: null
+            }
+        case ActionTypes.LOGOUT:
+            return {
+                ...state,
+                purchaseFailed: null,
                 purchaseSuccessfull: false,
                 product: null
             }

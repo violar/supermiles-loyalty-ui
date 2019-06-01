@@ -3,3 +3,5 @@ export const LOGIN_FAILED = 'LOGIN_FAILED';
 
 export const PURCHASE_SUCCESSFULL = 'PURCHASE_SUCCESSFULL';
 export const PURCHASE_FAILED = 'PURCHASE_FAILED';
+
+export const LOGOUT = 'LOGOUT';

@@ -5,22 +5,21 @@ import { Redirect } from 'react-router-dom';
 import { Container, Row, Col, Media } from 'reactstrap';
 
 
-const SignedIn = (props) => {
-    if(props.loggedIn){
+const UserContent = (props) => {
+    if(props.user) {
         return(
             <Media className="mt-3">
                 <Media left middle>
-                    <Media object src={props.avatar} />
+                    <Media object src={props.user.avatarUrl} />
                 </Media>
-                <Media className="pl-2 mt-1"><span className="user-points">{props.username}<br />{props.miles} miles</span></Media>
+                <Media className="pl-2 mt-1"><span className="user-points">{props.user.username}<br />{props.miles} miles</span></Media>
                 <Media className="mr-3 ml-3"><div className="vertical-line"></div></Media>
-                <Media className="mt-3"><span className="logout-btn">LOGOUT</span></Media>
+                <Media className="mt-3"><span className="logout-btn" onClick={() => props.logout()}>LOGOUT</span></Media>
             </Media>
         )
     } else {
         return (<div></div>);
     }
-    
 }
 
 export const Navigation = (props) => {
@@ -29,12 +28,9 @@ export const Navigation = (props) => {
             <div className="inner-container">
             <Container>
                 <Row>
-                    <Col xs="8" className="mt-4 pl-0"><a href={<Redirect to="/login" />} ><img src={logo} /></a></Col>
+                    <Col xs="8" className="mt-4 pl-0"><a href={<Redirect to="/login" />} ><img src={logo} alt="logo" /></a></Col>
                     <Col xs="4">
-                        <SignedIn loggedIn={props.loggedIn} 
-                            username={props.user.username}
-                            avatar={props.user.avatarUrl} 
-                            miles={props.miles} />
+                        <UserContent user={props.user} miles={props.miles} logout={props.logout} />
                     </Col>
                 </Row>
             </Container>

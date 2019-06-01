@@ -24,7 +24,6 @@ class ViewProduct extends Component {
     }
 
     selectOption(option) {
-
         this.setState({ selectedOption: option });
     }
 
@@ -45,13 +44,17 @@ class ViewProduct extends Component {
     }
 
     render() {
+        if(!this.props.user) {
+            return <Redirect to='/login' />
+        }
+
         if(this.props.purchaseSuccess) {
             return <Redirect to="/purchased" />
         }
 
         const buttons = 
             this.state.product.productOptions.map((option) => 
-                    <Button className={`product-option ${this.state.selectedOption.optionId === option.optionId ? 'options-largest-width' :''}`} onClick={() => this.selectOption(option)} active={this.state.selectedOption.optionId === option.optionId}>{option.optionName}</Button>);
+                    <Button key={option.optionId} className={`product-option ${this.state.selectedOption.optionId === option.optionId ? 'options-largest-width' :''}`} onClick={() => this.selectOption(option)} active={this.state.selectedOption.optionId === option.optionId}>{option.optionName}</Button>);
 
         return(
         <Container className="product-container">
@@ -59,7 +62,7 @@ class ViewProduct extends Component {
                 <Col><div className="product-heading">{this.state.product.productName}</div></Col>
             </Row>
             <Row className="mt-4">
-                <Col xs="7"><div className="product-thumbnail-outer"><img src={this.state.selectedOption.optionImageUrl} className="product-thumbnail" /></div></Col>
+                <Col xs="7"><div className="product-thumbnail-outer"><img src={this.state.selectedOption.optionImageUrl} className="product-thumbnail" alt="product-img" /></div></Col>
                 <Col xs="5">
                     <ButtonGroup className="btn-group-vertical options-largest-width">
                         {buttons}

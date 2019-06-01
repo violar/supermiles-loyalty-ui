@@ -1,17 +1,15 @@
-import React from 'react';
 import * as ActionTypes from './ActionTypes';
-import { users } from '../mockData';
+import { users } from '../../mockData';
 
 // Authenticate
 export const authenticateUser = (credentials) => (dispatch) => {
-    if(credentials.email === users[0].email && credentials.password === users[0].password) {
-        console.log("yoo");
+    let userExists = users.filter(user => user.password === credentials.password && user.email === credentials.email)
+
+    if(userExists.length > 0) {
         localStorage.setItem('miles', users[0].miles);
         dispatch(loginSuccessfull(users[0]));
     } else {
-        console.log("aaaaa");
-        let error = new Error("Hmm that doesn't look right. Try again.");
-        dispatch(loginFailed(error));
+        dispatch(loginFailed("Hmm that doesn't look right. Try again."));
     }
 }
 
@@ -25,7 +23,14 @@ const loginFailed = (message) => ({
     payload: message
 })
 
-// Purchase
+export const logout = () => (dispatch) => {
+    dispatch(logoutAction());
+}
+
+const logoutAction = () => ({
+    type: ActionTypes.LOGOUT
+})
+
 export const purchaseProduct = (product, userMiles) => (dispatch) => {
     if(product.optionMiles <= userMiles) {
         let remainingMiles = userMiles - product.optionMiles;
@@ -38,9 +43,9 @@ export const purchaseProduct = (product, userMiles) => (dispatch) => {
     }
 }
 
-const purchaseSuccessfull = (remainingMiles) => ({
+const purchaseSuccessfull = (product) => ({
     type: ActionTypes.PURCHASE_SUCCESSFULL,
-    payload: remainingMiles
+    payload: product
 })
 
 const purchaseFailed = (message) => ({

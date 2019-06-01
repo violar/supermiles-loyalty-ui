@@ -1,3 +1,24 @@
+# Miles Sample Application
+
+This purpose of this application is to demonstrate usage of react and redux.
+
+## Features
+- Login
+- View single product
+- Product comes in 3 options that customer may choose from
+- Add single product option to the cart
+- Purchase single product from cart
+- Logout
+
+## Notes
+- Front end application only - backend data is mocked in <a href="/src/mockData.js">mockData.js</a>
+- UX/UI closely follows given design prototype. I tried to exactly match them theme.
+- Page refresh is not supported, state is not saved
+- Added tests for ActionCreators.js. Need more tests. I am missing component tests (ran out of time)
+- Renamed keep shopping button on success screen to logout as specs described that functionality
+
+## Dev Setup Information
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

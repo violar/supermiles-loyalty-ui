@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { Login } from './login';
-import { Purchase } from './purchase';
+import { Login } from './reducers/login';
+import { Purchase } from './reducers/purchase';
 import { createForms } from 'react-redux-form';
-import { UserLogin } from './forms';
+import { UserLogin } from './forms/forms';
 
 
 export const ConfigureStore = () => {

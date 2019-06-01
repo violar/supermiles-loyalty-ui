@@ -1,24 +1,26 @@
-import * as ActionTypes from './ActionTypes';
+import * as ActionTypes from '../actions/ActionTypes';
 
 export const Login = (state = {
-    loginFailed: null,
-    loginSuccessfull: false,
-    user: {}
+    errorMessage: null,
+    user: null
 }, action) => {
     switch(action.type) {
         case ActionTypes.LOGIN_SUCCESSFULL:
             return {
                 ...state,
-                loginFailed: false,
-                loginSuccessfull: true,
+                errorMessage: null,
                 user: action.payload
             }
         case ActionTypes.LOGIN_FAILED:
             return {
                 ...state,
-                loginFailed: action.payload,
-                loginSuccessfull: false,
-                user: {}
+                errorMessage: action.payload
+            }
+        case ActionTypes.LOGOUT:
+            localStorage.removeItem('miles');
+            return {
+                ...state,
+                user: null
             }
         default: 
             return state;
