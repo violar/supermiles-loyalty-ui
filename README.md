@@ -4,6 +4,12 @@
 
 The purpose of this application is to demonstrate usage of react and redux.
 
+Live demo located at: <a href="http://supermiles-loyalty-ui.s3-website.ca-central-1.amazonaws.com">http://supermiles-loyalty-ui.s3-website.ca-central-1.amazonaws.com</a>
+
+<strong>Test Login Credentials</strong>
+Email: samplemail@mail.com
+Password: password
+
 ## Features
 - Login
 - View single product
@@ -14,10 +20,12 @@ The purpose of this application is to demonstrate usage of react and redux.
 
 ## Notes
 - Front end application only - backend data is mocked in <a href="/src/mockData.js">mockData.js</a>
-- UX/UI closely follows given design prototype. I tried to exactly match them theme.
+- UX/UI closely follows given design prototype. I tried to exactly match the theme
 - Page refresh is not supported, state is not saved
 - Added tests for ActionCreators.js. Need more tests. I am missing component tests (ran out of time)
-- Renamed keep shopping button on success screen to logout as specs described that functionality
+- Renamed "keep shopping" button on the success screen design spec to "logout"
+- Used Reactstrap library for Bootstrap integration. Bootstrap gives me convenient layout classes
+- Integrated CircleCI to run automated tests on git commits
 
 ## Dev Setup Information
 

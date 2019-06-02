@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/navigation.css';
-import logo from '../images/logo.jpg';
 import { Redirect } from 'react-router-dom';
 import { Container, Row, Col, Media } from 'reactstrap';
 
@@ -28,7 +27,7 @@ export const Navigation = (props) => {
             <div className="inner-container">
             <Container>
                 <Row>
-                    <Col xs="8" className="mt-4 pl-0"><a href={<Redirect to="/login" />} ><img src={logo} alt="logo" /></a></Col>
+                    <Col xs="8" className="mt-4 pl-0"><a href={<Redirect to="/login" />} ><img src="/images/logo.png" alt="logo" /></a></Col>
                     <Col xs="4">
                         <UserContent user={props.user} miles={props.miles} logout={props.logout} />
                     </Col>

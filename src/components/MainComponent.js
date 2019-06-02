@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { Login } from './LoginComponent';
 import Purchased from './PurchasedComponent';
 import ViewProduct from './ViewProductComponent';
@@ -61,7 +61,7 @@ class Main extends Component {
                         <Route path="/login" component={LoginPage} />
                         <Route path="/product/:id" component={ViewProductPage}/>
                         <Route path="/purchased" component={PurchasedPage}/>
-                        <Redirect to="/login" />
+                        <Route path="/" component={LoginPage} />
                     </Switch>
                 </div>
             </div>
